@@ -1,44 +1,44 @@
-from PIL import Image, ImageEnhance
-import os
+#Importando "Tkinter". El primer paso es el comando "pip install customtkinter"
+#El segundo paso es importarlo desde el codigo
+import customtkinter
 
-def main():
-    filename = r'ruta/a/imagen.png'
-    image = Image.open(filename)
+#Seteando el "modo de apariencia" y "color scheme para Dark Mode"
+customtkinter.set_appearance_mode("dark")
+customtkinter.set_default_color_theme("dark-blue")
 
-    # Aplicar mejoras a la imagen
-    enhancer = ImageEnhance.Sharpness(image)
-    resultado1 = enhancer.enhance(1.0)
+#Definiendo el elemento raiz (root element)
+root = customtkinter.CTk()
+root.geometry("500x350")
 
-    enhancer = ImageEnhance.Color(resultado1)
-    resultado2 = enhancer.enhance(1.0)
 
-    enhancer = ImageEnhance.Contrast(resultado2)
-    resultado3 = enhancer.enhance(1.0)
-
-    enhancer = ImageEnhance.Brightness(resultado3)
-    resultado4 = enhancer.enhance(1.0)
+def login():
+    print("Logged In Succesfully!")
     
-       # Obtener el nombre del archivo y la extensión para proximamente sobreescribir
-    nombre_archivo, extension = os.path.splitext(filename)
 
-    # Generar el nuevo nombre con el sufijo
-    nuevo_nombre = f"{nombre_archivo}_01{extension}" 
-    # Se puede cambiar "01" por el sufijo deseado
+#Haciendo los botones y declarando el padding con padx y pady
+frame = customtkinter.CTkFrame(master=root)
+frame.pack(pady=20, padx=60, fill="both", expand=True)
 
-    # Obtener la ruta completa del archivo modificado
-    ruta_modificada = os.path.join(r'ingrese la imagen', nuevo_nombre)
-    print("Ruta completa del archivo modificado:", ruta_modificada)
-    
-    # Guardar la imagen modificada en la ubicación especificada
-    try:
-        resultado4_rgb = resultado4.convert("RGB")
-        resultado4_rgb.save(ruta_modificada, format='JPEG')
-        print("Imagen guardada exitosamente.")
-    except Exception as e:
-        print("Error al guardar la imagen:", e)
 
-if __name__ == "__main__":
-    main()
+#Agregando labels para que ponga datos, buttons y una checkbox que diga "Remember Me"
+label = customtkinter.CTkLabel(master=frame, text="Login System", font=("Roboto", 24))
+label.pack(pady=12, padx=10)
+
+entry1 = customtkinter.CTkEntry(master=frame, placeholder_text="Username")
+entry1.pack(pady=12, padx=10)    
+ 
+entry2 = customtkinter.CTkEntry(master=frame, placeholder_text="Password", show="*")
+entry2.pack(pady=12, padx=10)
+
+button = customtkinter.CTkButton(master=frame, text="Login", command=login)
+button.pack(pady=12, padx=10)
+
+checkbox = customtkinter.CTkCheckBox(master=frame, text="Remember Me")
+checkbox.pack(pady=12, padx=10)
+
+root.mainloop()
+
+       
 
 
 
