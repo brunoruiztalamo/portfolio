@@ -1,0 +1,41 @@
+{
+    "intents" : [
+        {
+            "tag" : "greeting",
+            "patterns" : [
+                "Hola",
+                "Hey",
+                "Hola Jason",
+                "Hola como estas?",
+                "Que onda Jason?"
+            ],
+            "responses": [
+                "Buenas tardes señor",
+                "Buenas tardes, que puedo hacer por ti?"
+
+            ]
+        },
+        {
+            "tag" : "nombre",
+            "patterns" : [
+            "Cual es tu nombre?",
+            "Como te llamas?"
+            ],
+            "responses": [
+                "Mi nombre es Jason, encantado de conocerlo",
+                "Mi nombre es Jason, no lo gaste, soldado."
+            ]
+        },
+        {
+            "tag" : "file",
+            "patterns" : [
+                "Crea un archivo",
+                "Crea un archivo nuevo"
+            ],
+            "responses": [
+                
+            ]
+        }
+    ]
+}
+
